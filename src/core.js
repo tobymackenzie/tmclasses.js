@@ -24,7 +24,7 @@ define(['module'], function(__module, __undefined){
 	/*---
 	Function: addProperty
 
-	Add a property to an object.
+	Add a property to an object.  Also tmlib.core.addProperty()
 
 	Parameters:
 		object(Object): Object to add properties to
@@ -46,7 +46,8 @@ define(['module'], function(__module, __undefined){
 
 	/*---
 	Function: contains
-	In support browsers, determines if a function contains a given string / matches a given regex.  Useful to see if a certain variable is used or function is called, particularly for checking if a child class calls a parent class's method.  For unsupported browsers, always returns true to allow them to function (may change this behavior in the future.)
+
+	In support browsers, determines if a function contains a given string / matches a given regex.  Useful to see if a certain variable is used or function is called, particularly for checking if a child class calls a parent class's method.  For unsupported browsers, always returns true to allow them to function (may change this behavior in the future).  Currently duplicated in tmlib.core.functions.
 
 	Parameters:
 		function(Function): the function to examine
@@ -70,7 +71,7 @@ define(['module'], function(__module, __undefined){
 
 	/*---
 	Function: duckPunch
-	Duck punch a function with a wrapper, ie create a function that runs the wrapper with the original function available inside.  Two types are available, since we cannot close into an already existing function.  One unshifts the original function into the first parameter for the wrapper.  Wrapper must shift off first argument as original function to be able to apply to said function.  The other attaches the original function as a key on the 'this' context, then restores whatever was at that key before.
+	Duck punch a function with a wrapper, ie create a function that runs the wrapper with the original function available inside.  Two types are available, since we cannot close into an already existing function.  One unshifts the original function into the first parameter for the wrapper.  Wrapper must shift off first argument as original function to be able to apply to said function.  The other attaches the original function as a key on the 'this' context, then restores whatever was at that key before.  Currently duplicated in tmlib.core.functions.
 
 	Parameters:
 		function(Function): Function to wrap
@@ -155,7 +156,7 @@ define(['module'], function(__module, __undefined){
 	/*---
 	Function: mergeInto
 
-	Merge all keys from all other objects into first object, preferring keys of objects to the farthest right.
+	Merge all keys from all other objects into first object, preferring keys of objects to the farthest right.  Currently duplicated in tmlib.core.mergeInto.
 
 	Paramaters:
 		_object(Object): object to merge other paramaters into
@@ -184,7 +185,7 @@ define(['module'], function(__module, __undefined){
 	/*---
 	Attribute: creationPlugins
 
-	Additional functionality to be performed on class creation
+	Additional functionality to be performed on class creation.  Also tmlib.core.creationPlugins
 	*/
 	var __creationPlugins = {
 		/*--
@@ -245,7 +246,7 @@ define(['module'], function(__module, __undefined){
 		/*---
 		Method: create
 
-		Create a class.  Provides an abstraction to creating classes directly by creating functions and manipulating their prototypes.  Will become much more capable, though ideally this'll be designed to be minimal but extensible to support other functionality.  Eventually all non-library classes will be migrated to be created by this function.  Meant to replace __.class.define, though it may take some bits from it before it gets removed.
+		Create a class.  Provides an abstraction to creating classes directly by creating functions and manipulating their prototypes.  Will become much more capable, though ideally this'll be designed to be minimal but extensible to support other functionality.  Eventually all non-library classes will be migrated to be created by this function.  Meant to replace __.class.define, though it may take some bits from it before it gets removed.  Also tmlib.core.create().
 
 		Parameters:
 			_options(map):
@@ -335,7 +336,7 @@ define(['module'], function(__module, __undefined){
 		/*---
 		Method: createConstructor
 
-		Creates default constructor function for class.  Done as separate function so that it can be overridable.
+		Creates default constructor function for class.  Done as separate function so that it can be overridable.  Also tmlib.core.createConstructor().
 
 		Parameters:
 			_parent(Class): 'class' (constructor) of parent class
@@ -378,7 +379,7 @@ define(['module'], function(__module, __undefined){
 		/*---
 		Method: createPrototype
 
-		Create prototype of class.
+		Create prototype of class.  Also tmlib.core.createPrototype().
 
 		Parameters:
 			Class(Function): class to create prototype for
@@ -397,6 +398,8 @@ define(['module'], function(__module, __undefined){
 
 		/*---
 		Method: mixIn
+
+		Also tmlib.core.mixIn().
 
 		Parameters:
 			mixin(Array|Map): If an array of class definitions, run mixIn on each definition.  If a definition, mix this definition in to object/parent.
