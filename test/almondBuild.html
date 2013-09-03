@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test tmclasses</title>
+
+		<!-- load qunit -->
+		<script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css"></link>
+
+		<!-- console logging alias -->
+		<script>
+			this.clog = function(){ console.log.apply(console, arguments); };
+		</script>
+
+		<!-- load tmclasses -->
+		<script src="../build/build.almond.js"></script>
+
+		<!-- load tests -->
+		<script src="core.js"></script>
+		<script src="BaseClass.js"></script>
+	</head>
+	<body>
+		<div id="qunit">QUnit failure</div>
+	</body>
+</html>

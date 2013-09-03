@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Test tmclasses</title>
+
+		<!-- load qunit -->
+		<script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+		<link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css"></link>
+
+		<!-- load require -->
+		<script src="../vendor/require.js"></script>
+
+		<!-- load tmclasses and test -->
+		<script>
+			//--test with global strict mode
+			'use strict';
+
+			//-- console logging alias
+			this.clog = function(){ console.log.apply(console, arguments); }
+
+			//--tell tests whether this is using the build version
+			this.__usingBuild = false;
+
+			//--make sure QUnit doesn't start immediately, so we can load all files first
+			QUnit.config.autostart = false;
+
+			//--configure require.js inline
+			if(typeof requirejs && requirejs.config){
+				requirejs.config({
+					paths: {
+						//--tmclasses
+						tmclasses: '../src'
+						,test: '../test'
+					}
+				});
+			}
+
+			//--require tmclasses and tests
+			require([
+					'tmclasses/core'
+					,'test/core'
+					,'tmclasses/BaseClass'
+					,'test/BaseClass'
+				]
+				,function(){
+					//--start tests
+					QUnit.start();
+				}
+			);
+		</script>
+	</head>
+	<body>
+		<div id="qunit">QUnit failure</div>
+	</body>
+</html>

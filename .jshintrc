@@ -1,0 +1,14 @@
+{
+	"camelcase": true
+	,"curly": true
+	,"latedef": true
+	,"laxbreak": true
+	,"laxcomma": true
+	,"newcap": false
+	,"noarg": true
+	,"nonew": true
+	,"quotmark": "single"
+	,"trailing": true
+	,"undef": true
+	,"unused": true
+}
