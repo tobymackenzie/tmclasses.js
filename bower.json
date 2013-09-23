@@ -1,0 +1,9 @@
+{
+	"name": "tmclasses"
+	,"version": "0.0.1"
+	,"devDependencies": {
+		"almond": "~0.2.6"
+		,"qunit": "~1.12.0"
+		,"requirejs": "~2.1.8"
+	}
+}

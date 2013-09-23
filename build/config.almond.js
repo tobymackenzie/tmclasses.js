@@ -3,8 +3,7 @@ Configuration for require js
 */
 ({
 	baseUrl: '.'
-	,include: ['../vendor/almond.js', 'requirements']
-	,optimize: 'none'
+	,include: ['../vendor/almond/almond.js', 'requirements']
 	,out: 'build.almond.js'
 	,paths: {
 		tmclasses: '../src'
