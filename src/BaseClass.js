@@ -1,5 +1,5 @@
 /* global define */
-define(['./core'], function(__core){
+define(['./core', './MGetSet'], function(__core, __MGetSet){
 	/*---
 	Class: BaseClass
 
@@ -71,6 +71,9 @@ define(['./core'], function(__core){
 				return this.apply(this, arguments);
 			}
 		}
+		,mixins: [
+			__MGetSet
+		]
 	});
 
 	//--export
