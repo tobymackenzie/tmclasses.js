@@ -47,10 +47,11 @@ define([], function(){
 			return this
 			Arguments:
 				_key (String): String key on this object to delete/unset
-			Return this
+			Return: this
 			*/
 			,unset: function(_key){
 				delete this[_key];
+				return this;
 			}
 		}
 	};
