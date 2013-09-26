@@ -17,10 +17,14 @@ module.exports = function(__grunt){
 				,'test/**/*.js'
 			]
 		}
+		,qunit: {
+			all: ['test/**/*.html']
+		}
 	});
 
 	//==tasks
 	__grunt.registerTask('default', [
 		'jshint'
+		,'qunit'
 	]);
 };
