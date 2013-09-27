@@ -18,9 +18,6 @@
 			//-- console logging alias
 			this.clog = function(){ console.log.apply(console, arguments); }
 
-			//--tell tests whether this is using the build version
-			this.__usingBuild = false;
-
 			//--make sure QUnit doesn't start immediately, so we can load all files first
 			QUnit.config.autostart = false;
 

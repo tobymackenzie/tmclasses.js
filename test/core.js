@@ -1,7 +1,7 @@
 /* global define, QUnit, test */
 (function(__globals, _factory){
 	if(typeof define === 'function' && define.amd){
-		if(__globals.__usingBuild){
+		if(__globals.__usingAlmondBuild){
 			define(['tmclasses'], function(__tmclasses){
 				return _factory(__tmclasses);
 			});
