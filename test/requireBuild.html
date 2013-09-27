@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 	<head>
-		<title>Test tmclasses-> built with almond, using require</title>
+		<title>Test tmclasses-> built for require</title>
 
 		<!-- load qunit -->
 		<script src="../vendor/qunit/qunit/qunit.js"></script>
@@ -19,7 +19,7 @@
 			this.clog = function(){ console.log.apply(console, arguments); }
 
 			//--tell tests whether this is using the build version
-			this.__usingBuild = true;
+			this.__usingBuild = false;
 
 			//--make sure QUnit doesn't start immediately, so we can load all files first
 			QUnit.config.autostart = false;
@@ -27,16 +27,15 @@
 			//--configure require.js inline
 			requirejs.config({
 				paths: {
-					tmclasses: '../dist/tmclasses.almond'
+					tmclasses: '../dist/tmclasses.require'
 					,test: '.'
-				}
-				,shim: {
 				}
 			});
 
 			//--require tests
 			require([
-					'test/core'
+					'tmclasses'
+					,'test/core'
 					,'test/BaseClass'
 					,'test/MGetSet'
 				]
