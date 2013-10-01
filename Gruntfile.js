@@ -62,6 +62,10 @@ module.exports = function(__grunt){
 	]);
 	__grunt.registerTask('default', [
 		'jshint'
+		,'test'
+	]);
+	__grunt.registerTask('test', [
+		'build:all'
 		,'qunit'
 	]);
 };
