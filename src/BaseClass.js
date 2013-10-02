@@ -1,5 +1,5 @@
 /* global define */
-define(['./core', './MGetSet'], function(__core, __MGetSet){
+define(['./core', './MGetSet', './MPubSub'], function(__core, __MGetSet, __MPubSub){
 	/*---
 	Class: BaseClass
 
@@ -73,6 +73,7 @@ define(['./core', './MGetSet'], function(__core, __MGetSet){
 		}
 		,mixins: [
 			__MGetSet
+			,__MPubSub
 		]
 	});
 
