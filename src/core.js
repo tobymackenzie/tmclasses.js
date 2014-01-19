@@ -4,7 +4,11 @@ define(['module'], function(__module, __undefined){
 	==configuration and dependencies
 	=====*/
 	var __config = __module.config();
-	var __globals = __config.globals || this;
+	var __globals = __config.globals || (function(){
+		'use strict';
+		var _return = this || eval;
+		return (typeof _return === 'object') ? _return : _return('this');
+	})();
 	var __Array = __config.Array || __globals.Array;
 	var __Object = __config.Object || __globals.Object;
 
