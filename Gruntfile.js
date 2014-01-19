@@ -66,4 +66,6 @@ module.exports = function(__grunt){
 		'build:all'
 		,'qunit'
 	]);
-};
+	__grunt.registerTask('test:nobuild', [
+		'qunit'
+	]);};
