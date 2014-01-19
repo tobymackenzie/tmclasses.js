@@ -57,6 +57,6 @@
 			QUnit.start();
 			assert.ok(_hasDoPubBeenCalled, '_hasDoPubBeenCalled should be true after second doPub() call');
 			assert.ok(_hasDoPubSubBeenCalled, '_hasDoPubSubBeenCalled should be true after second doPub() call');
-		}, 0);
+		}, 50); //-# must be greater than 0 for phantomjs, which runs the timeout faster than it takes for the sub callbacks to be called
 	});
 }));

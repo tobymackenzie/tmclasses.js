@@ -6,6 +6,7 @@
 		<!-- load qunit -->
 		<script src="../vendor/qunit/qunit/qunit.js"></script>
 		<link rel="stylesheet" href="../vendor/qunit/qunit/qunit.css"></link>
+		<script>QUnit.config.autostart = false;</script>
 
 		<!-- console logging alias -->
 		<script>
@@ -20,6 +21,7 @@
 		<script src="BaseClass.js"></script>
 		<script src="MGetSet.js"></script>
 		<script src="MPubSub.js"></script>
+		<script>QUnit.start()</script>
 	</head>
 	<body>
 		<div id="qunit">QUnit failure</div>
