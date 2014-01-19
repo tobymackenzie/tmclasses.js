@@ -52,12 +52,10 @@ module.exports = function(__grunt){
 
 	//==tasks
 	__grunt.registerTask('build', [
-		'jshint'
-		,'requirejs:require'
+		'requirejs:require'
 	]);
 	__grunt.registerTask('build:all', [
-		'jshint'
-		,'requirejs:almond'
+		'requirejs:almond'
 		,'requirejs:require'
 	]);
 	__grunt.registerTask('default', [
