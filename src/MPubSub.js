@@ -21,8 +21,12 @@ define([], function(){
 					return this.__subscriptions[_key];
 				}
 			}
-			,pub: function(_eventName, _data){
+			,pub: function(){
+				var _args = arguments;
+				var _eventName = _args[0];
 				var _this = this;
+				Array.prototype.shift.call(_args);
+
 				//-#publish in separate thread
 				setTimeout(function(){
 					var _i = 0;
@@ -31,7 +35,7 @@ define([], function(){
 					var _subscriptionsLength = _subscriptions.length;
 					for(; _i < _subscriptionsLength; ++_i){
 						_subscription = _subscriptions[_i];
-						_subscription.call(_this, _data || null);
+						_subscription.apply(_this, _args);
 					}
 				}, 0);
 			}
