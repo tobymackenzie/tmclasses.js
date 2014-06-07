@@ -6,4 +6,8 @@
 		,"qunit": "~1.12.0"
 		,"requirejs": "~2.1.8"
 	}
+	,"ignore": [
+		".jshintrc"
+		,"test"
+	]
 }
