@@ -44,10 +44,10 @@ var myInstance = new MyClass({option1: 'value1', option2: 'value2'});
 ```
 
 ### Standalone build
-Download `build/build.almond.js` and put it somewhere in your web root.  Feel free to rename it.  Load it like usual.
+Download the whole repo and run `grunt requirejs:almond` in the repo root.  Then move 'dist/tmclasses.almond.js' into your project or reference it in place.
 
 ```html
-<script src="tmclasses.js"></script>
+<script src="/js-tmclasses/dist/tmclasses.almond.js"></script>
 ```
 
 In your own script, you can access and use it much like the AMD example, without the need to require anything.
