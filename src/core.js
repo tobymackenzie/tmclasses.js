@@ -1,20 +1,6 @@
 /* global define */
-define(['module'], function(__module, __undefined){
-	/*====
-	==configuration and dependencies
-	=====*/
-	var __config = __module.config();
-	var __globals = __config.globals || (function(){
-		'use strict';
-		var _return = this || eval;
-		return (typeof _return === 'object') ? _return : _return('this');
-	})();
-	var __Array = __config.Array || __globals.Array;
-	var __Object = __config.Object || __globals.Object;
-
-	//--using autoapply makes for a nicer interface, but also has a performance penalty
-	var __doAutoApply = __config.doAutoApply || true;
-	var __parentName = __config.parentName || '__parent';
+define(['./config'], function(__config, __undefined){
+	var __globals = __config.globals;
 
 	/*---
 	Library: tmclasses
@@ -149,7 +135,7 @@ define(['module'], function(__module, __undefined){
 				//-* break;
 				default:
 					return function(){
-						__Array.prototype.unshift.call(arguments, _originalFunction);
+						__config.Array.prototype.unshift.call(arguments, _originalFunction);
 						return _wrapper.apply(this, arguments);
 					};
 				//-* break;
@@ -218,14 +204,14 @@ define(['module'], function(__module, __undefined){
 					typeof _prototype[_name] == 'function'
 					&& typeof _parent.prototype[_name] == 'function'
 					//--only override if function actually calls the parent
-					&& __contains(_prototype[_name], '\\b' + __parentName + '(\\(|\\.apply|\\.call)\\b')
+					&& __contains(_prototype[_name], '\\b' + __config.parentName + '(\\(|\\.apply|\\.call)\\b')
 				){
 					_prototype[_name] = __duckPunch(
 						_parent.prototype[_name]
 						,_prototype[_name]
 						,{
-							autoApply: __doAutoApply
-							,key: __parentName
+							autoApply: __config.doAutoApply
+							,key: __config.parentName
 							,name: _name
 							,type: 'this'
 						}
@@ -283,11 +269,7 @@ define(['module'], function(__module, __undefined){
 					_parent = _options.parent;
 				break;
 				default:
-					if(__core.BaseClass){
-						_parent = __core.BaseClass;
-					}else{
-						_parent = __Object;
-					}
+					_parent = __config.BaseClass;
 				break;
 			}
 
@@ -416,7 +398,7 @@ define(['module'], function(__module, __undefined){
 			var _mixinsLength;
 			if(typeof _mixin == 'object'){
 				//--if _mixin is an array, mix in all objects in array
-				if(_mixin instanceof __Array){
+				if(_mixin instanceof __config.Array){
 					for(
 						_i = 0, _mixinsLength = _mixin.length ; _i < _mixinsLength ; ++_i
 					){
