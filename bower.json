@@ -1,6 +1,6 @@
 {
 	"name": "tmclasses"
-	,"version": "0.0.1"
+	,"version": "0.0.2"
 	,"devDependencies": {
 		"almond": "~0.2.6"
 		,"qunit": "~1.12.0"
