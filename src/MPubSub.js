@@ -44,8 +44,15 @@ define([], function(){
 				_subscriptions.push(_callback);
 			}
 			,__subscriptions: null
-			,unsub: function(){
-
+			,unsub: function(_eventName, _callback){
+				if(_eventName){
+					var _subscriptions = this.getSubscriptions(_eventName);
+					for(var _i = _subscriptions.length - 1; _i >= 0 ; --_i){
+						if(!_callback || _callback === _subscriptions[_i]){
+							_subscriptions.splice(_i, 1);
+						}
+					}
+				}
 			}
 		}
 	};

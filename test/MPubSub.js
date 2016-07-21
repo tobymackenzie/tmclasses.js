@@ -72,4 +72,50 @@
 			assert.ok(_hasDoPubSubBeenCalled, '_hasDoPubSubBeenCalled should be true after second doPub() call');
 		}, 50); //-# must be greater than 0 for phantomjs, which runs the timeout faster than it takes for the sub callbacks to be called
 	});
+	test('unsub', function(assert){
+		var _instance = new __BaseClass();
+		var _callback = function(){ 'asdf'; };
+		_instance.sub('asdf', _callback);
+		_instance.sub('asdf', function(){ 'bsdf'; });
+		_instance.sub('asdf', function(){ 'csdf'; });
+		_instance.sub('qwer', _callback);
+		_instance.sub('qwer', function(){ 'qwer'; });
+
+		assert.strictEqual(
+			_instance.getSubscriptions('asdf').length
+			,3
+			,'Should have 3 "asdf" subscriptions to start'
+		);
+		assert.strictEqual(
+			_instance.getSubscriptions('qwer').length
+			,2
+			,'Should have 2 "qwer" subscriptions to start'
+		);
+
+		//--unsub by callback
+		_instance.unsub('asdf', _callback);
+		assert.strictEqual(
+			_instance.getSubscriptions('asdf').length
+			,2
+			,'Should have 2 "asdf" subscriptions after unsubscribing by callback'
+		);
+		assert.strictEqual(
+			_instance.getSubscriptions('qwer').length
+			,2
+			,'Should still have 2 "qwer" subscriptions'
+		);
+
+		//--unsub by event name
+		_instance.unsub('qwer');
+		assert.strictEqual(
+			_instance.getSubscriptions('asdf').length
+			,2
+			,'Should still have 2 "asdf" subscriptions'
+		);
+		assert.strictEqual(
+			_instance.getSubscriptions('qwer').length
+			,0
+			,'Should have 0 "qwer" subscriptions after unsubscribing entire event name'
+		);
+	});
 }));
