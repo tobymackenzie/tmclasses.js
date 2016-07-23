@@ -1,4 +1,4 @@
-/* global define, QUnit, test */
+/* global define, QUnit */
 (function(__globals, _factory){
 	if(typeof define === 'function' && define.amd){
 		if(__globals.__usingAlmondBuild){
@@ -16,7 +16,7 @@
 	QUnit.module('tmclasses.core');
 
 	//--define tests
-	test('create', function(assert){
+	QUnit.test('create', function(assert){
 		//==initial setup
 		//--create parent class
 		var parentClass = tmclasses.create({
@@ -184,7 +184,7 @@
 		assert.equal(typeof myInstance.nonPropertyA, 'undefined', 'Non properties should not be added to class.');
 	});
 
-	test('mixIn', function(assert){
+	QUnit.test('mixIn', function(assert){
 		//==initial setup
 		var targetClass = function(){};
 		targetClass.originalStatic = 'originalValue';

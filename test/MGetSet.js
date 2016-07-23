@@ -1,4 +1,4 @@
-/* global define, QUnit, test */
+/* global define, QUnit */
 (function(__globals, _factory){
 	if(typeof define === 'function' && define.amd){
 		if(__globals.__usingAlmondBuild){
@@ -18,7 +18,7 @@
 	//--name module
 	QUnit.module('MGetSet');
 
-	test('get', function(assert){
+	QUnit.test('get', function(assert){
 		//==initial setup
 		var _objValue = {
 			foo: 'foo'
@@ -52,7 +52,7 @@
 			,'nonExistantKey should be undefined'
 		);
 	});
-	test('set', function(assert){
+	QUnit.test('set', function(assert){
 		//==initial setup
 		var _instance = new __BaseClass({
 			prop1: 'initialValue'
@@ -131,7 +131,7 @@
 			,'set should return "this"'
 		);
 	});
-	test('unset', function(assert){
+	QUnit.test('unset', function(assert){
 		//==initial setup
 		var _NewClass = __core.create({
 			parent: __BaseClass

@@ -1,4 +1,4 @@
-/* global define, QUnit, test */
+/* global define, QUnit */
 (function(__globals, _factory){
 	if(typeof define === 'function' && define.amd){
 		if(__globals.__usingAlmondBuild){
@@ -16,7 +16,7 @@
 	//--name module
 	QUnit.module('BaseClass');
 
-	test('BaseClass', function(assert){
+	QUnit.test('BaseClass', function(assert){
 		//==initial setup
 		var myInstance = new __BaseClass({
 			instanceProperty1: 'value1'
@@ -33,7 +33,7 @@
 		assert.ok(typeof myInstance.instanceMethod1 == 'function', 'myInstance should have a property "instanceMethod1" that is a function');
 		assert.equal(myInstance.instanceMethod1(), 'foo', 'myInstance.instanceMethod1() should return the string "foo"');
 	});
-	test('direct call init', function(assert){
+	QUnit.test('direct call init', function(assert){
 		//==initial setup
 		var _instance = __BaseClass({foo: 'foo', bar: 'bar'});
 		//==tests
@@ -44,7 +44,7 @@
 		assert.equal(_instance.foo, 'foo','arguments should be passed to init method');
 		assert.equal(_instance.bar, 'bar','arguments should be passed to init method');
 	});
-	test('::create() init', function(assert){
+	QUnit.test('::create() init', function(assert){
 		//==initial setup
 		var _instance = __BaseClass.create({foo: 'foo', bar: 'bar'});
 		//==tests
@@ -55,7 +55,7 @@
 		assert.equal(_instance.foo, 'foo','arguments should be passed to init method');
 		assert.equal(_instance.bar, 'bar','arguments should be passed to init method');
 	});
-	test('inited flags', function(assert){
+	QUnit.test('inited flags', function(assert){
 		//==initial setup
 		var _instance = new __BaseClass();
 
