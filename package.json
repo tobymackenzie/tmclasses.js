@@ -1,5 +1,8 @@
 {
 	"name": "tmclasses",
 	"main": "main.js",
-	"type": "module"
+	"type": "module",
+	"devDependencies": {
+		"qunit": "^2.14.0"
+	}
 }
