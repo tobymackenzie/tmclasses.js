@@ -2,6 +2,6 @@
 *.swo
 *.swp
 .DS_Store
-/dist
+/package-lock.json
 /node_modules
 /vendor

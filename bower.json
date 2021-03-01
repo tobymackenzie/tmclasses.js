@@ -1,13 +1,11 @@
 {
 	"name": "tmclasses"
-	,"version": "0.1.0"
 	,"devDependencies": {
-		"almond": "~0.2.6"
-		,"qunit": "~2.0.0"
-		,"requirejs": "~2.1.8"
+		"qunit": "~2.0.0"
 	}
 	,"ignore": [
 		".jshintrc"
+		,"bin"
 		,"test"
 	]
 }

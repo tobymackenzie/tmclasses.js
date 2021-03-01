@@ -1,27 +1,15 @@
-js-tmclasses
+tmclasses.js
 ============
 
 A simple javascript class library.  More features will be added in the future.  This project is not documented yet, but I have simple usage examples to get started.
 
 Usage
 -----
-This library has been built using [require.js](), so it can be loaded as an AMD module with that.  I've also used [almond.js]() to make a standalone build that can be loaded as a regular script and used as a global variable.
 
-### Require/AMD
-Download the whole repo or just the `src` directory and put it somewhere require has access to.  Configure the path to the `src` directory in require.js:
+This library has been built using ES Modules.  Download the whole repo or just the `src` directory and put it somehwhere your scripts can access it.  Import `src/main.js`, and use its `create()` method to create classes.
 
-```javascript
-requirejs.config({
-	paths: {
-		tmclasses: 'vendor/js-tmclasses/src'
-	}
-});
-```
-
-Require `tmclasses/tmclasses` and then use the create method to create a class.  An example:
-
-```javascript
-var tmclasses = require('tmclasses/tmclasses');
+``` js
+import tmclasses from 'tmclasses.js/src/main.js');
 
 var MyClass = tmclasses.create({
 	init: function(_opts){
@@ -42,32 +30,3 @@ var MyClass = tmclasses.create({
 
 var myInstance = new MyClass({option1: 'value1', option2: 'value2'});
 ```
-
-### Standalone build
-Download the whole repo and run `grunt requirejs:almond` in the repo root.  Then move 'dist/tmclasses.almond.js' into your project or reference it in place.
-
-```html
-<script src="/js-tmclasses/dist/tmclasses.almond.js"></script>
-```
-
-In your own script, you can access and use it much like the AMD example, without the need to require anything.
-
-```javascript
-var MyClass = tmclasses.create({
-	init: function(_opts){
-		console.log('MyClass instantiated with options ', _opts);
-		this.__parent(arguments);
-	}
-	,properties: {
-		foo: 'foo'
-		,getFoo: function(){
-			return this.foo;
-		}
-		,setFoo: function(_newFoo){
-			this.foo = _newFoo;
-			return this;
-		}
-	}
-});
-```
-

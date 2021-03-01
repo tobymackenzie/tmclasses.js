@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+chdir(__DIR__ . '/../test');
+$port = 8080;
+$found = false;
+while(!$found){
+	$foundCount = (int) trim(shell_exec("netstat -anp tcp | grep '\.{$port}\s' | wc -l"));
+	if($foundCount === 1){
+		++$port;
+	}else{
+		$found = true;
+	}
+}
+echo "opening test server on localhost:{$port}\n";
+// exec("open http://localhost:{$port}");
+passthru("php -S localhost:{$port}");
