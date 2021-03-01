@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+jshint -c .jshintrc src/*.js test/*.js
