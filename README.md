@@ -9,7 +9,7 @@ Usage
 This library has been built using ES Modules.  Install with `npm install --save 'github:tobymackenzie/tmclasses.js#semver:^v0.1'` or download the whole repo and put it somehwhere your scripts can access it.  Import `tmclasses/src/main.js`, and use its `create()` method to create classes.
 
 ``` js
-import tmclasses from 'tmclasses.js/src/main.js');
+import tmclasses from 'tmclasses/src/main.js');
 
 var MyClass = tmclasses.create({
 	init: function(_opts){
