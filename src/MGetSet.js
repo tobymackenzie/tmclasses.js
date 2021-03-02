@@ -24,17 +24,14 @@ export default {
 		Return: this
 		*/
 		set: function(_keyOrSet, _val){
-			switch(typeof _keyOrSet){
-				case 'string':
-					this[_keyOrSet] = _val;
-				break;
-				case 'object':
-					for(var _key in _keyOrSet){
-						if(_keyOrSet.hasOwnProperty(_key)){
-							this.set(_key, _keyOrSet[_key]);
-						}
+			if(typeof _keyOrSet === 'object'){
+				for(var _key in _keyOrSet){
+					if(_keyOrSet.hasOwnProperty(_key)){
+						this.set(_key, _keyOrSet[_key]);
 					}
-				break;
+				}
+			}else{
+				this[_keyOrSet] = _val;
 			}
 			return this;
 		},

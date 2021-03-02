@@ -8,13 +8,13 @@ TODO: .unsub() not implemented
 export default {
 	properties: {
 		getSubscriptions: function(_key){
-			if(!(this.__subscriptions instanceof Array)){
-				this.__subscriptions = [];
+			if(!this.__subscriptions){
+				this.__subscriptions = {};
 			}
 			if(typeof _key === 'undefined'){
 				return this.__subscriptions;
 			}else{
-				if(typeof this.__subscriptions[_key] == 'undefined'){
+				if(!this.__subscriptions[_key]){
 					this.__subscriptions[_key] = [];
 				}
 				return this.__subscriptions[_key];
@@ -28,19 +28,14 @@ export default {
 
 			//-#publish in separate thread
 			setTimeout(function(){
-				var _i = 0;
-				var _subscription;
 				var _subscriptions = _this.getSubscriptions(_eventName);
-				var _subscriptionsLength = _subscriptions.length;
-				for(; _i < _subscriptionsLength; ++_i){
-					_subscription = _subscriptions[_i];
-					_subscription.apply(_this, _args);
+				for(var _i = 0; _i < _subscriptions.length; ++_i){
+					_subscriptions[_i].apply(_this, _args);
 				}
 			}, 0);
 		},
 		sub: function(_eventName, _callback){
-			var _subscriptions = this.getSubscriptions(_eventName);
-			_subscriptions.push(_callback);
+			this.getSubscriptions(_eventName).push(_callback);
 		},
 		__subscriptions: null,
 		unsub: function(_eventName, _callback){

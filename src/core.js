@@ -6,7 +6,7 @@ Library: tmclasses
 
 Library for creating classes
 */
-var __core = {
+export default {
 	BaseClass: Object,
 	/*---
 	Attribute: creationPlugins
@@ -37,7 +37,7 @@ var __core = {
 		Function object, the constructor of the class, but representing the class itself.
 	*/
 	create: function(opts){
-		if(typeof opts == 'undefined'){
+		if(!opts){
 			opts = {};
 		}
 
@@ -52,7 +52,7 @@ var __core = {
 				_parent = opts.parent;
 			break;
 			default:
-				_parent = __core.BaseClass;
+				_parent = this.BaseClass;
 			break;
 		}
 
@@ -66,7 +66,7 @@ var __core = {
 		//---must explicitely merge in parent statics, since this is a new 'class'
 		mergeIn(_class, _parent);
 		//---now merge with overwrite the passed in statics
-		if(typeof opts.statics == 'object'){
+		if(typeof opts.statics === 'object'){
 			_class = mergeIn(_class, opts.statics);
 		}
 
@@ -113,17 +113,13 @@ var __core = {
 		var _constructor = function _tmConstructor(){
 			//--using new keyword, handle normally
 			if(this instanceof _constructor){
-				//--call defined constructor or parent constructor
-				switch(typeof this.init){
+				if(typeof this.init === 'function'){
 					//--call class's init method, if it exists
-					case 'function':
-						this.init.apply(this, arguments);
-					break;
+					this.init.apply(this, arguments);
+				}else{
 					//--call parent's constructor
-					case 'undefined':
-						_parent.apply(this, arguments);
-					break;
-					//--all other possibilities cause nothing to happen
+					//-! old setup only did this if `init` was undefined.  Why?
+					_parent.apply(this, arguments);
 				}
 			//--calling constructor directly, create new instance of class using new
 			}else{
@@ -235,5 +231,3 @@ var __core = {
 		}
 	},
 };
-
-export default __core;

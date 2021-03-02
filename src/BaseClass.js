@@ -16,18 +16,14 @@ export default core.create({
 		options(map): receives a key value map of properties to add or apply to instance being created.
 	*/
 	init: function(opts){
-		opts = opts || {};
-
 		//--deInit if inited
 		if(this.isInited){
 			this.deInit();
 		}
 
 		//--set value of members from arguments
-		for(var _key in opts){
-			if(opts.hasOwnProperty(_key)){
-				this[_key] = opts[_key];
-			}
+		if(typeof opts === 'object'){
+			this.set(opts);
 		}
 
 		//--make sure inited flags are set
