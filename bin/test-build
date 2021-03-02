@@ -1,0 +1,23 @@
+#!/usr/bin/env php
+<?php
+chdir(__DIR__ . '/../src');
+
+//--build js
+if(!empty(shell_exec('which rollup')) && !empty(shell_exec('which uglifyjs'))){
+	foreach([
+		'core.js',
+		'main.js',
+	] as $file){
+		$command = 'rollup ' . $file . ' --format iife --silent';
+		$command .= ' | uglifyjs --compress --mangle';
+		$command .= ' >  tmp.3jd82p.js';
+		passthru($command);
+		echo "{$file} minified to " . filesize('tmp.3jd82p.js') . " bytes\n";
+		$headerBytes = 313;
+		$fileBytes = (int) trim(shell_exec('gzip -c -9 tmp.3jd82p.js | wc -c'));
+		echo "minzipped to ≈" . $fileBytes . " bytes (≈" . ($headerBytes + $fileBytes) . " with headers)\n";
+		unlink('tmp.3jd82p.js');
+	}
+}else{
+	throw new Exception("`rollup` and `uglifyjs` must be installed for building");
+}
