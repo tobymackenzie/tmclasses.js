@@ -1,4 +1,4 @@
-/* global Array, global, globalThis, Object, self, window */
+/* global Array, Object, window */
 import mergeIn from './mergeIn.js';
 
 /*---
@@ -15,23 +15,6 @@ var __core = {
 	*/
 	creationPlugins: {},
 
-	/*---
-	Attribute: scope
-
-	Object to attach named classes to.  Likely will be removed.
-	*/
-	scope: (function(){
-		if(typeof globalThis === 'undefined'){
-			return globalThis;
-		}else if(typeof window !== 'undefined'){
-			return window;
-		}else if(typeof self !== 'undefined'){
-			return self;
-		}else if(typeof global !== 'undefined'){
-			return global;
-		}
-	}()),
-
 	/*=====
 	==Class functions
 	=====*/
@@ -44,7 +27,6 @@ var __core = {
 		opts(map):
 			init(Function|null): Function to run as constructor.  null prevents parent constructor from being run
 			mixins(Array): Collection of class definitions to mix in properties of to class.  Mixed in before class properties, so that class properties will override mixin properties.
-			name(String): A string name for the class.  Currently used only to assign to the window namespace, though will support any namespace and will use this for class meta data later.
 			parent(Object|String): Object to extend.  If none is passed, will extend a base object or the built in object.
 			preMixins(Array): Collection of class definitions to mix in properties of to class.  Mixed in before classes properties and before regular mixins.  Here primarily to match postMixins naming convention.
 			postMixins(Array): Collection of class definitions to mix in properties of to class.  Mixed in after all other property definitions, and thus will override them.
@@ -63,8 +45,7 @@ var __core = {
 		var _parent;
 		switch(typeof opts.parent){
 			case 'string':
-				//-! should accomodate namespaces
-				_parent = this.scope[opts.parent];
+				_parent = window[opts.parent];
 			break;
 			case 'function':
 			case 'object':
@@ -113,11 +94,6 @@ var __core = {
 		//--replace constructor so it is as it should be
 		_class.prototype.constructor = _class;
 
-		//--set appropriate object name if provided
-		if(opts.name){
-			//-! should support namespaces
-			this.scope[opts.name] = _class;
-		}
 		return _class;
 	},
 
