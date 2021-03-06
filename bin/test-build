@@ -1,12 +1,12 @@
 #!/usr/bin/env php
 <?php
-chdir(__DIR__ . '/../src');
+chdir(__DIR__ . '/../test');
 
 //--build js
 if(!empty(shell_exec('which rollup')) && !empty(shell_exec('which uglifyjs'))){
 	foreach([
-		'core.js',
-		'main.js',
+		'core-build.js',
+		'main-build.js',
 	] as $file){
 		$command = 'rollup ' . $file . ' --format iife --silent';
 		$command .= ' | uglifyjs --compress --mangle';
