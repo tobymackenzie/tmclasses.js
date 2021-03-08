@@ -1,5 +1,5 @@
 {
-	"name": "tobymackenzie/tmclasses.js",
+	"name": "@tobymackenzie/tmclasses.js",
 	"main": "main.js",
 	"type": "module",
 	"devDependencies": {
