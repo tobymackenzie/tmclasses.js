@@ -13,7 +13,7 @@ QUnit.test('create', function(assert){
 		,init: function(){
 			this.propertyFromParentClassInit = 'woo';
 		}
-		,properties: {
+		,props: {
 			parentClassProperty1: 'foo'
 			,parentClassProperty2: 'bar'
 		}
@@ -27,7 +27,7 @@ QUnit.test('create', function(assert){
 			parentClass.prototype.init.apply(this, arguments);
 			this.propertyFromChildClassInit = 'woo';
 		}
-		,'properties': {
+		,props: {
 			childClassProperty1: 'boo'
 			,childClassProperty2: 'far'
 			,parentClassProperty2: 'overriddenBar'
@@ -38,7 +38,7 @@ QUnit.test('create', function(assert){
 	var childClassInstance = new childClass();
 
 	//==test
-	//--properties
+	//--props
 	//---parent
 	assert.ok(parentClassInstance.parentClassProperty1, 'parentClassInstance.parentClassProperty1 should be set');
 	assert.equal(parentClassInstance.parentClassProperty1, 'foo', 'parentClassInstance.parentClassProperty1 should match prototype');
@@ -74,17 +74,17 @@ QUnit.test('create', function(assert){
 
 	//==mixins init
 	var mixinMixinA = {
-		properties: {
+		props: {
 			propertyC: 'mmAvalueC'
 		}
 	};
 	var mixinMixinB = {
-		properties: {
+		props: {
 			propertyD: 'mmBvalueD'
 		}
 	};
 	var mixinMixinC = {
-		properties: {
+		props: {
 			propertyD: 'mmCvalueD'
 		}
 		,postMixins: [
@@ -92,19 +92,19 @@ QUnit.test('create', function(assert){
 		]
 	};
 	var preMixinA = {
-		properties: {
+		props: {
 			propertyA: 'pAvalueA'
 			,propertyB: 'pAvalueB'
 		}
 	};
 	var preMixinB = {
-		properties: {
+		props: {
 			propertyB: 'pBvalueB'
 			,propertyC: 'pBvalueC'
 		}
 	};
 	var mixinA = {
-		properties: {
+		props: {
 			propertyA: 'mAvalueA'
 			,propertyC: 'mAvalueC'
 			,propertyD: 'mAvalueD'
@@ -113,7 +113,7 @@ QUnit.test('create', function(assert){
 	};
 	var mixinB = {
 		mixins: mixinMixinA
-		,properties: {
+		,props: {
 			propertyE: 'mBvalueE'
 			,propertyF: 'mBvalueF'
 			,methodA: function(){ return 'from mixinB'; }
@@ -121,13 +121,13 @@ QUnit.test('create', function(assert){
 	};
 	var postMixinA = {
 		mixins: mixinMixinC
-		,properties: {
+		,props: {
 			methodB: function(){ return 'from postMixinA'; }
 		}
 		,nonPropertyA: 'nonProperty'
 	};
 	var postMixinB = {
-		properties: {
+		props: {
 			propertyG: 'pBvalueG'
 		}
 	};
@@ -140,7 +140,7 @@ QUnit.test('create', function(assert){
 			mixinA
 			,mixinB
 		]
-		,properties: {
+		,props: {
 			propertyC: 'valueC'
 			,propertyE: 'valueE'
 			,propertyG: 'valueG'
@@ -185,7 +185,7 @@ QUnit.test('mixIn', function(assert){
 		,methodToBeOverridden: function(){ return 2; }
 	};
 	var mixinDefinition = {
-		properties: {
+		props: {
 			mixinProperty: 'mixinValue'
 			,propertyToBeOverridden: 'mixinValue'
 			,mixinMethod: function(){ return this.mixinProperty; }
@@ -199,7 +199,7 @@ QUnit.test('mixIn', function(assert){
 
 	core.mixIn(mixinDefinition, targetObject, targetClass);
 	//==tests
-	//--properties
+	//--props
 	assert.equal(
 		targetObject.originalProperty
 		,'originalValue'

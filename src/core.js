@@ -30,7 +30,7 @@ export default {
 			parent(Object|String): Object to extend.  If none is passed, will extend a base object or the built in object.
 			preMixins(Array): Collection of class definitions to mix in properties of to class.  Mixed in before classes properties and before regular mixins.  Here primarily to match postMixins naming convention.
 			postMixins(Array): Collection of class definitions to mix in properties of to class.  Mixed in after all other property definitions, and thus will override them.
-			properties(map): Properties to add to object's prototype.  Currently added directly, but will eventually support per property configuration by passing a map.
+			props(map): Properties to add to object's prototype.  Currently added directly, but will eventually support per property configuration by passing a map.
 			statics(map): Properties to add directly to class, to be called statically.
 
 	Return:
@@ -194,10 +194,10 @@ export default {
 					}
 				}
 				//--mix in properties
-				if(typeof _mixin.properties == 'object'){
-					for(_key in _mixin.properties){
-						if(_mixin.properties.hasOwnProperty(_key)){
-							_object[_key] = _mixin.properties[_key];
+				if(typeof _mixin.props == 'object'){
+					for(_key in _mixin.props){
+						if(_mixin.props.hasOwnProperty(_key)){
+							_object[_key] = _mixin.props[_key];
 						}
 					}
 				}

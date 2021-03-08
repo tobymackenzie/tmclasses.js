@@ -73,7 +73,7 @@ QUnit.test('__parent()', function(assert){
 		init: function(){
 			this.propertyFromParentClassInit = 'woo';
 		}
-		,properties: {
+		,props: {
 			parentClassProperty1: 'foo'
 			,parentClassProperty2: 'bar'
 		}
@@ -87,7 +87,7 @@ QUnit.test('__parent()', function(assert){
 			this.__parent(arguments);
 			this.propertyFromChildClassInit = 'woo';
 		}
-		,'properties': {
+		,props: {
 			childClassProperty1: 'boo'
 			,childClassProperty2: 'far'
 			,parentClassProperty2: 'overriddenBar'
@@ -98,7 +98,7 @@ QUnit.test('__parent()', function(assert){
 	var childClassInstance = new childClass();
 
 	//==test
-	//--properties
+	//--props
 	//---parent
 	assert.ok(parentClassInstance.parentClassProperty1, 'parentClassInstance.parentClassProperty1 should be set');
 	assert.equal(parentClassInstance.parentClassProperty1, 'foo', 'parentClassInstance.parentClassProperty1 should match prototype');

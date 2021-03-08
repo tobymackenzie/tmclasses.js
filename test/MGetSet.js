@@ -124,7 +124,7 @@ QUnit.test('unset', function(assert){
 	//==initial setup
 	var _NewClass = __core.create({
 		parent: __BaseClass
-		,properties: {
+		,props: {
 			initialProp1: 'initialValue1'
 			,initialProp2: 'initialValue2'
 		}

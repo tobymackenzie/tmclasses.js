@@ -113,18 +113,18 @@ var addParentAccessToMethods = function addParentAccessToMethods(opts){
 	var _parent = opts.parent;
 	var _prototype = opts.prototype;
 	opts = opts.options;
-	var _properties = {};
-	if(typeof opts.properties === 'object'){
-		mergeIn(_properties, opts.properties);
+	var _props = {};
+	if(typeof opts.props === 'object'){
+		mergeIn(_props, opts.props);
 	}
 
-	//--add init method to properties if it exists
+	//--add init method to props if it exists
 	if(typeof opts.init != 'undefined'){
-		_properties.init = opts.init;
+		_props.init = opts.init;
 	}
 
 	//--duck punch overridden methods to have access to parent class.  This has a noticable performance penalty, so if you need increased performance, call/apply with the prototype of the parent class directly
-	for(var _name in _properties){
+	for(var _name in _props){
 		if(
 			//--only override if function is in both parent and child classes
 			typeof _prototype[_name] == 'function'

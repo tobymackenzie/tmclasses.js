@@ -13,7 +13,7 @@ export default core.create({
 	Method: init
 
 	Parameters:
-		options(map): receives a key value map of properties to add or apply to instance being created.
+		options(map): receives a key value map of props to add or apply to instance being created.
 	*/
 	init: function(opts){
 		//--deInit if inited
@@ -30,11 +30,11 @@ export default core.create({
 		this.isInited = true;
 		this.hasInited = true;
 	},
-	properties: {
+	props: {
 		/*---
 		Method: deInit
 
-		Stop intervals and event monitors and unset instance properties to allow an object to be inited again.  Meant to be overridden by children.
+		Stop intervals and event monitors and unset instance props to allow an object to be inited again.  Meant to be overridden by children.
 		*/
 		deInit: function(){
 			this.isInited = false;

@@ -6,7 +6,7 @@ Add publish/subscribe functionality to a class.
 TODO: .unsub() not implemented
 */
 export default {
-	properties: {
+	props: {
 		getSubscriptions: function(_key){
 			if(!this.__subscriptions){
 				this.__subscriptions = {};

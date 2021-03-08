@@ -16,7 +16,7 @@ var MyClass = tmclasses.create({
 		console.log('MyClass instantiated with options ', _opts);
 		this.__parent(arguments);
 	}
-	,properties: {
+	,props: {
 		foo: 'foo'
 		,getFoo: function(){
 			return this.foo;
