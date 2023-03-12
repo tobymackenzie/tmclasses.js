@@ -194,6 +194,9 @@ export default {
 					}
 				}
 				//--mix in properties
+				if(!_mixin.props && _mixin.properties){
+					_mixin.props = _mixin.properties;
+				}
 				if(typeof _mixin.props == 'object'){
 					for(_key in _mixin.props){
 						if(_mixin.props.hasOwnProperty(_key)){
