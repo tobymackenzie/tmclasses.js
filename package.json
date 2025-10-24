@@ -4,5 +4,10 @@
 	"type": "module",
 	"devDependencies": {
 		"qunit": "^2.14.0"
-	}
+	},
+	"files": [
+		"LICENSE.md",
+		"README.md",
+		"src/"
+	]
 }
